@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todoo_app/constants.dart';
+import 'task_heading.dart';
+import 'task_text.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -61,20 +64,38 @@ class _InputPageState extends State<InputPage> {
                     Expanded(
                       child: ListView(
                         children: [
-                          ListTile(
-                            title: Text(
-                              "Doctor appointment",
-                              style: TextStyle(
-                                fontFamily: "GloriaHallelujah",
-                                fontSize: 25,
-                              ),
+                          TaskHead(title: "TODAY"),
+                          TaskText(text: "Buy flowers for Sarah"),
+                          TaskText(text: "weekly Schedule for Jason"),
+                          TaskText(text: "Buy Groceries"),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 30.0,
                             ),
-                            // leading: Checkbox(value: true, onChanged: ),
+                            child: Divider(color: Colors.black),
                           ),
+                          SizedBox(height: 20),
+
+                          TaskHead(title: "TOMORROW"),
+                          TaskText(text: "Call James"),
+                          TaskText(text: "Refund payment"),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 30.0,
+                            ),
+                            child: Divider(color: kIconColor),
+                          ),
+                          SizedBox(height: 20),
+
+                          TaskHead(title: "UPCOMING"),
+                          TaskText(text: "Follow up on Steph"),
+                          TaskText(text: "Make the research "),
+                          TaskText(text: "Call Dan"),
                         ],
                       ),
                     ),
-                    FloatingActionButton(onPressed: () {}),
                   ],
                 ),
               ),
