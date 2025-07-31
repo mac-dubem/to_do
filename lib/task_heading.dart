@@ -16,8 +16,8 @@ class TaskHead extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              // fontFamily: "GloriaHallelujah",
-              fontSize: 25,
+              fontFamily: "GloriaHallelujah",
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),

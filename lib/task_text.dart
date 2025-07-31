@@ -41,8 +41,8 @@ class _TaskTextState extends State<TaskText> {
           decoration: taskCompleted
               ? TextDecoration.lineThrough
               : TextDecoration.none,
-          // fontFamily: "GloriaHallelujah",
-          fontSize: 20,
+          fontFamily: "GloriaHallelujah",
+          fontSize: 18,
         ),
       ),
       trailing: IconButton(

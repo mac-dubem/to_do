@@ -75,7 +75,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             child: Divider(color: Colors.black),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
 
                           TaskHead(title: "TOMORROW"),
                           TaskText(text: "Call James"),
@@ -87,7 +87,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             child: Divider(color: kIconColor),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
 
                           TaskHead(title: "UPCOMING"),
                           TaskText(text: "Follow up on Steph"),
