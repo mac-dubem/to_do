@@ -15,6 +15,7 @@ class _InputPageState extends State<InputPage> {
   List<String> todayList = [
     "Buy flowers for Sarah",
     "weekly Schedule for Jason",
+    "Call James",
   ];
 
   @override
@@ -78,6 +79,8 @@ class _InputPageState extends State<InputPage> {
                           ),
 
                           TaskText(text: todayList[0], onDelete: () {}),
+                          TaskText(text: todayList[1], onDelete: () {}),
+                          TaskText(text: todayList[2], onDelete: () {}),
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
