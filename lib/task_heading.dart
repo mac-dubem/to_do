@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todoo_app/constants.dart';
+import 'screens/add_task_page.dart';
 
 class TaskHead extends StatelessWidget {
-  const TaskHead({super.key, required this.title});
+  const TaskHead({super.key, required this.title, required this.onPress});
 
   final String title;
+  final void Function()  onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,29 @@ class TaskHead extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed:onPress,
             child: Icon(Icons.add, color: kBlack, size: 25),
           ),
-          // GestureDetector (child: Icon(Icons.add)),
+        
         ],
       ),
     );
   }
 }
+
+
+//  () {
+//               showModalBottomSheet(
+//                 context: context,
+//                 // isScrollControlled: true,
+//                 builder: (BuildContext context) => SingleChildScrollView(
+//                   child: Container(
+//                     padding: EdgeInsets.only(
+//                       bottom: MediaQuery.of(context).viewInsets.bottom,
+//                     ),
+
+//                     child: AddTaskPage(),
+//                   ),
+//                 ),
+//               );
+//             },

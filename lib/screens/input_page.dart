@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todoo_app/constants.dart';
-import 'task_heading.dart';
-import 'task_text.dart';
+import '../task_heading.dart';
+import '../task_text.dart';
+import 'add_task_page.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -11,6 +12,11 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  List<String> todayList = [
+    "Buy flowers for Sarah",
+    "weekly Schedule for Jason",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,10 +70,14 @@ class _InputPageState extends State<InputPage> {
                     Expanded(
                       child: ListView(
                         children: [
-                          TaskHead(title: "TODAY"),
-                          TaskText(text: "Buy flowers for Sarah"),
-                          TaskText(text: "weekly Schedule for Jason"),
-                          TaskText(text: "Buy Groceries"),
+                          TaskHead(
+                            title: "TODAY",
+                            onPress: () {
+                              BottomSheet(context);
+                            },
+                          ),
+
+                          TaskText(text: todayList[0], onDelete: () {}),
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -77,10 +87,16 @@ class _InputPageState extends State<InputPage> {
                           ),
                           SizedBox(height: 10),
 
-                          TaskHead(title: "TOMORROW"),
-                          TaskText(text: "Call James"),
-                          TaskText(text: "Refund payment"),
+                          TaskHead(
+                            title: "TOMORROW",
+                            onPress: () {
+                              BottomSheet(context);
+                            },
+                          ),
+                          TaskText(text: todayList[1], onDelete: () {}),
 
+                          // TaskText(text: "Call James"),
+                          // TaskText(text: "Refund payment"),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 30.0,
@@ -89,10 +105,16 @@ class _InputPageState extends State<InputPage> {
                           ),
                           SizedBox(height: 10),
 
-                          TaskHead(title: "UPCOMING"),
-                          TaskText(text: "Follow up on Steph"),
-                          TaskText(text: "Make the research "),
-                          TaskText(text: "Call Dan"),
+                          TaskHead(
+                            title: "UPCOMING",
+                            onPress: () {
+                              BottomSheet(context);
+                            },
+                          ),
+                          TaskText(text: todayList[1], onDelete: () {}),
+                          // TaskText(text: "Follow up on Steph"),
+                          // TaskText(text: "Make the research "),
+                          // TaskText(text: "Call Dan"),
                         ],
                       ),
                     ),
@@ -101,6 +123,22 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Future<dynamic> BottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      // isScrollControlled: true,
+      builder: (BuildContext context) => SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+
+          child: AddTaskPage(),
         ),
       ),
     );

@@ -5,12 +5,13 @@ class TaskText extends StatefulWidget {
   const TaskText({
     super.key,
     required this.text,
+    required this.onDelete,
     // required this.taskCompleted,
     // required this.onChanged,
   });
 
   final String text;
-
+  final void Function() onDelete;
   // final bool taskCompleted;
   // final bool onChanged;
 
@@ -41,12 +42,12 @@ class _TaskTextState extends State<TaskText> {
           decoration: taskCompleted
               ? TextDecoration.lineThrough
               : TextDecoration.none,
-          fontFamily: "GloriaHallelujah",
+          // fontFamily: "GloriaHallelujah",
           fontSize: 18,
         ),
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: widget.onDelete,
         icon: Icon(Icons.delete, color: kIconColor),
       ),
     );
