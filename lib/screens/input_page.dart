@@ -18,6 +18,18 @@ class _InputPageState extends State<InputPage> {
     "Call James",
   ];
 
+  List<String> tomorrrowList = [
+    "Buy flowers for Sarah",
+    "weekly Schedule for Jason",
+    "Refund payment",
+  ];
+
+  List<String> upcomeList = [
+    "Call Dan",
+    "Make the research ",
+    "Follow up on Steph",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +108,8 @@ class _InputPageState extends State<InputPage> {
                               BottomSheet(context);
                             },
                           ),
-                          TaskText(text: todayList[1], onDelete: () {}),
+                          TaskText(text: tomorrrowList[0], onDelete: () {}),
+                          TaskText(text: tomorrrowList[1], onDelete: () {}),
 
                           // TaskText(text: "Call James"),
                           // TaskText(text: "Refund payment"),
@@ -114,10 +127,9 @@ class _InputPageState extends State<InputPage> {
                               BottomSheet(context);
                             },
                           ),
-                          TaskText(text: todayList[1], onDelete: () {}),
-                          // TaskText(text: "Follow up on Steph"),
-                          // TaskText(text: "Make the research "),
-                          // TaskText(text: "Call Dan"),
+                          TaskText(text: upcomeList[0], onDelete: () {}),
+                          TaskText(text: upcomeList[1], onDelete: () {}),
+                          TaskText(text: upcomeList[2], onDelete: () {}),
                         ],
                       ),
                     ),
@@ -141,7 +153,9 @@ class _InputPageState extends State<InputPage> {
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
 
-          child: AddTaskPage(),
+          child: AddTaskPage(addTaskCallback:(newAddText) {
+            print(newAddText);
+          }),
         ),
       ),
     );
