@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todoo_app/constants.dart';
-import '../task_heading.dart';
-import '../task_text.dart';
+import '../widget/task_heading.dart';
+import '../widget/task_text.dart';
 import 'add_task_page.dart';
+import '../widget/confirmation_page.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -19,15 +20,15 @@ class _InputPageState extends State<InputPage> {
   ];
 
   List<String> tomorrrowList = [
-    "Buy flowers for Sarah",
-    "weekly Schedule for Jason",
-    "Refund payment",
+    // "Buy flowers for Sarah",
+    // "weekly Schedule for Jason",
+    // "Refund payment",
   ];
 
   List<String> upcomeList = [
-    "Call Dan",
-    "Make the research ",
-    "Follow up on Steph",
+    // "Call Dan",
+    // "Make the research ",
+    // "Follow up on Steph",
   ];
 
   @override
@@ -78,6 +79,8 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
 
+
+                // ============== TASK SECTIONS ======================
                 child: Column(
                   children: [
                     Expanded(
@@ -86,13 +89,24 @@ class _InputPageState extends State<InputPage> {
                           TaskHead(
                             title: "TODAY",
                             onPress: () {
-                              BottomSheet(context);
+                              BottomSheet(context, todayList);
                             },
                           ),
-
-                          TaskText(text: todayList[0], onDelete: () {}),
-                          TaskText(text: todayList[1], onDelete: () {}),
-                          TaskText(text: todayList[2], onDelete: () {}),
+                          for (var task in todayList)
+                            TaskText(
+                              text: task,
+                              onDelete: () {
+                                ConfirmationPage(
+                                  context: context,
+                                  task: task,
+                                  onTap: () {
+                                    setState(() {
+                                      todayList.remove(task);
+                                    });
+                                  },
+                                );
+                              },
+                            ),
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -105,11 +119,25 @@ class _InputPageState extends State<InputPage> {
                           TaskHead(
                             title: "TOMORROW",
                             onPress: () {
-                              BottomSheet(context);
+                              BottomSheet(context, tomorrrowList);
                             },
                           ),
-                          TaskText(text: tomorrrowList[0], onDelete: () {}),
-                          TaskText(text: tomorrrowList[1], onDelete: () {}),
+                          for (var task in tomorrrowList)
+                            TaskText(
+                              text: task,
+                              onDelete: () {
+                                ConfirmationPage(
+                                  context: context,
+                                  task: task,
+                                  onTap: () {
+                                    setState(() {
+                                      tomorrrowList.remove(task);
+                                    });
+                                  },
+                                );
+                              },
+                            ),
+                          //  for (int i = 0; i < tomorrowList.length)
 
                           // TaskText(text: "Call James"),
                           // TaskText(text: "Refund payment"),
@@ -124,12 +152,26 @@ class _InputPageState extends State<InputPage> {
                           TaskHead(
                             title: "UPCOMING",
                             onPress: () {
-                              BottomSheet(context);
+                              BottomSheet(context, upcomeList);
                             },
                           ),
-                          TaskText(text: upcomeList[0], onDelete: () {}),
-                          TaskText(text: upcomeList[1], onDelete: () {}),
-                          TaskText(text: upcomeList[2], onDelete: () {}),
+                          for (var task in upcomeList)
+                            TaskText(
+                              text: task,
+                              onDelete: () {
+                                ConfirmationPage(
+                                  context: context,
+                                  task: task,
+                                  onTap: () {
+                                    setState(() {
+                                      upcomeList.remove(task);
+                                    });
+                                  },
+                                );
+                              },
+                            ),
+                          // TaskText(text: upcomeList[1], onDelete: () {}),
+                          // TaskText(text: upcomeList[2], onDelete: () {}),
                         ],
                       ),
                     ),
@@ -143,7 +185,7 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  Future<dynamic> BottomSheet(BuildContext context) {
+  Future<dynamic> BottomSheet(BuildContext context, List<String> targetList) {
     return showModalBottomSheet(
       context: context,
       // isScrollControlled: true,
@@ -153,9 +195,17 @@ class _InputPageState extends State<InputPage> {
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
 
-          child: AddTaskPage(addTaskCallback:(newAddText) {
-            print(newAddText);
-          }),
+          child: AddTaskPage(
+            addTaskCallback: (newAddText) {
+              if (newAddText.trim().isNotEmpty) {
+                setState(() {
+                  targetList.add(newAddText);
+                  print(newAddText);
+                  Navigator.pop(context);
+                });
+              }
+            },
+          ),
         ),
       ),
     );

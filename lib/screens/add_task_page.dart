@@ -13,15 +13,7 @@ class AddTaskPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            textAlign: TextAlign.center,
-            "Add New Task",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 25,
-              // fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text(textAlign: TextAlign.center, "Add New Task", style: kHeadStyle),
           TextField(
             onChanged: (newText) => newAddText = newText,
             textAlign: TextAlign.center,
@@ -36,15 +28,7 @@ class AddTaskPage extends StatelessWidget {
               style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(kBlack),
               ),
-              child: Text(
-                "Add",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "GloriaHallelujah",
-                  fontSize: 20,
-                ),
-              ),
+              child: Text("Add", style: kButtonStyle),
             ),
           ),
         ],
@@ -52,6 +36,3 @@ class AddTaskPage extends StatelessWidget {
     );
   }
 }
-
-
-

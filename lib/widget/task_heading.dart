@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoo_app/constants.dart';
-import 'screens/add_task_page.dart';
+import '../screens/add_task_page.dart';
 
 class TaskHead extends StatelessWidget {
   const TaskHead({super.key, required this.title, required this.onPress});
