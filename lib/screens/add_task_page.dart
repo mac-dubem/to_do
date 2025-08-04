@@ -23,7 +23,7 @@ class AddTaskPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 150),
             child: TextButton(
               onPressed: () {
-                addTaskCallback(newAddText);
+                addTaskCallback( );
               },
               style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(kBlack),
