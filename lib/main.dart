@@ -15,13 +15,13 @@ class TodoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black,
+        // scaffoldBackgroundColor: Colors.black,
 
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle.light,
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.black,
-        ),
+        // appBarTheme: AppBarTheme(
+        //   // systemOverlayStyle: SystemUiOverlayStyle.light,
+        //   foregroundColor: Colors.white,
+        //   backgroundColor: Colors.black,
+        // ),
       ),
       home: InputPage(),
     );

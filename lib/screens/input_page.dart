@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:todoo_app/constants.dart';
 import '../widget/task_heading.dart';
 import '../widget/task_text.dart';
@@ -33,6 +34,13 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+      ),
+    );
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -79,7 +87,6 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
 
-
                 // ============== TASK SECTIONS ======================
                 child: Column(
                   children: [
@@ -96,7 +103,7 @@ class _InputPageState extends State<InputPage> {
                             TaskText(
                               text: task,
                               onDelete: () {
-                                ConfirmationPage(
+                                confirmationPage(
                                   context: context,
                                   task: task,
                                   onTap: () {
@@ -126,7 +133,7 @@ class _InputPageState extends State<InputPage> {
                             TaskText(
                               text: task,
                               onDelete: () {
-                                ConfirmationPage(
+                                confirmationPage(
                                   context: context,
                                   task: task,
                                   onTap: () {
@@ -159,7 +166,7 @@ class _InputPageState extends State<InputPage> {
                             TaskText(
                               text: task,
                               onDelete: () {
-                                ConfirmationPage(
+                                confirmationPage(
                                   context: context,
                                   task: task,
                                   onTap: () {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoo_app/constants.dart';
 
-Future<dynamic> ConfirmationPage({
+Future<dynamic> confirmationPage({
   required BuildContext context,
   required String task,
   required VoidCallback onTap,
