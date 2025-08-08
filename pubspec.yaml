@@ -55,7 +55,7 @@ flutter_icons:
   image_path: "images/appicon.jpg" # path to your icon image
 
 flutter_native_splash:
-  background_image: images/back.jpeg
+  background_image: images/2back.jpeg
   # color: "#0A0E21" # Background color of the splash screen
   image:  images/appicon.jpg # Your splash logo
   android: true

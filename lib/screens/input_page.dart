@@ -113,6 +113,14 @@ class _InputPageState extends State<InputPage> {
                                   },
                                 );
                               },
+                              onEdit: (newText) {
+                                setState(() {
+                                  final index = todayList.indexOf(task);
+                                  if (index != -1) {
+                                    todayList[index] = newText;
+                                  }
+                                });
+                              },
                             ),
 
                           Padding(
@@ -142,6 +150,14 @@ class _InputPageState extends State<InputPage> {
                                     });
                                   },
                                 );
+                              },
+                              onEdit: (newText) {
+                                setState(() {
+                                  final index = tomorrrowList.indexOf(task);
+                                  if (index != -1) {
+                                    tomorrrowList[index] = newText;
+                                  }
+                                });
                               },
                             ),
                           //  for (int i = 0; i < tomorrowList.length)
@@ -176,7 +192,20 @@ class _InputPageState extends State<InputPage> {
                                   },
                                 );
                               },
+                              onEdit: (newText) {
+                                // setState(() {
+                                //   upcomeList.indexOf(task);
+                                //   // todayList[1] = newText;
+                                // });
+                                setState(() {
+                                  final index = upcomeList.indexOf(task);
+                                  if (index != -1) {
+                                    upcomeList[index] = newText;
+                                  }
+                                });
+                              },
                             ),
+
                           // TaskText(text: upcomeList[1], onDelete: () {}),
                           // TaskText(text: upcomeList[2], onDelete: () {}),
                         ],

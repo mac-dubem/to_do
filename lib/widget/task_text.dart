@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:todoo_app/constants.dart';
 
 class TaskText extends StatefulWidget {
-  const TaskText({super.key, required this.text, required this.onDelete});
+  const TaskText({
+    super.key,
+    required this.text,
+    required this.onDelete,
+    required this.onEdit,
+  });
 
   final String text;
   final void Function() onDelete;
+  final void Function(String newText) onEdit;
 
   @override
   State<TaskText> createState() => _TaskTextState();
@@ -15,32 +21,33 @@ class _TaskTextState extends State<TaskText> {
   bool taskCompleted = false;
 
   bool _isEditing = false;
-  late TextEditingController _controller;
+  late TextEditingController controller;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = TextEditingController(text: widget.text);
+    controller = TextEditingController(text: widget.text);
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
   void _saveEdit() {
-    if (_controller.text.trim().isEmpty) {
+    if (controller.text.trim().isEmpty) {
       // If the new text is empty, don't save it and keep editing disabled
-      _controller.text = widget.text; // reset to original
+      controller.text = widget.text; // reset to original
+    } else {
+      widget.onEdit(controller.text); // Send new text back to parent
     }
     setState(() {
       _isEditing = false;
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +64,14 @@ class _TaskTextState extends State<TaskText> {
       ),
       title: _isEditing
           ? TextField(
-              controller: _controller,
+              controller: controller,
               autofocus: true,
               onSubmitted: (value) => _saveEdit(),
               onEditingComplete: _saveEdit,
               style: TextStyle(
-                decoration: taskCompleted
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none,
+                // decoration: taskCompleted
+                //     ? TextDecoration.lineThrough
+                //     : TextDecoration.none,
                 // fontFamily: "GloriaHallelujah",
                 fontSize: 18,
               ),
@@ -76,7 +83,7 @@ class _TaskTextState extends State<TaskText> {
                 });
               },
               child: Text(
-                _controller.text,
+                controller.text,
                 style: TextStyle(
                   decoration: taskCompleted
                       ? TextDecoration.lineThrough
