@@ -93,10 +93,12 @@ class _TaskTextState extends State<TaskText> {
                 ),
               ),
             ),
-      trailing: IconButton(
-        onPressed: widget.onDelete,
-        icon: Icon(Icons.delete, color: kIconColor),
-      ),
+      trailing: taskCompleted
+          ? IconButton(
+              onPressed: widget.onDelete,
+              icon: Icon(Icons.delete, color: kIconColor),
+            )
+          : null,
     );
   }
 }
