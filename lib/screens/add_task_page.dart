@@ -13,21 +13,36 @@ class AddTaskPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(textAlign: TextAlign.center, "Add New Task", style: kHeadStyle),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              textAlign: TextAlign.center,
+              "Add New Task",
+              style: kHeadStyle,
+            ),
+          ),
           TextField(
             onChanged: (newText) => newAddText = newText,
+            cursorColor: Colors.black,
+          
+            // style: TextStyle(color: Colors.white),
             textAlign: TextAlign.center,
           ),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 150),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 150),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              image: DarkBackgroundImage,
+            ),
             child: TextButton(
               onPressed: () {
                 addTaskCallback(newAddText);
               },
-              style: ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(kBlack),
-              ),
+              // style: ButtonStyle(
+
+              //   backgroundColor: WidgetStatePropertyAll(Colors.white),
+              // ),
               child: Text("Add", style: kButtonStyle),
             ),
           ),

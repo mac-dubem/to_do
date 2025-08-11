@@ -43,12 +43,7 @@ class _InputPageState extends State<InputPage> {
     );
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/back.jpeg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: BoxDecoration(image: DarkBackgroundImage),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -77,10 +72,7 @@ class _InputPageState extends State<InputPage> {
               child: Container(
                 decoration: BoxDecoration(
                   // color: Colors.white,
-                  image: DecorationImage(
-                    image: AssetImage("images/2back.jpeg"),
-                    fit: BoxFit.cover,
-                  ),
+                  image: LightBackgroundImage,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
@@ -227,6 +219,13 @@ class _InputPageState extends State<InputPage> {
       // isScrollControlled: true,
       builder: (BuildContext context) => SingleChildScrollView(
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            image: LightBackgroundImage,
+          ),
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
