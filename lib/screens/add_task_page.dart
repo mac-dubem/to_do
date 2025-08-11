@@ -24,7 +24,8 @@ class AddTaskPage extends StatelessWidget {
           TextField(
             onChanged: (newText) => newAddText = newText,
             cursorColor: Colors.black,
-          
+            
+
             // style: TextStyle(color: Colors.white),
             textAlign: TextAlign.center,
           ),
